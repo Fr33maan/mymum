@@ -1,22 +1,14 @@
 const express = require("express");
-const pgp = require("pg-promise")();
-const superagent = require("superagent");
 const app = express();
+const pgp = require("pg-promise")();
 const db = pgp("postgres://postgres:9998@localhost:5432/my_database");
 const bodyParser = require("body-parser");
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-async function displayTokens() {
-  try {
-    const tokens = await db.any("SELECT * FROM Token");
-    console.log(tokens);
-    return tokens;
-  } catch (e) {
-    console.log(e);
-    return e;
-  }
+function getTokens({ _db }) {
+  return _db.any("SELECT * FROM Token")
 }
 
 async function insertTokens(type, token) {
@@ -29,23 +21,38 @@ async function insertTokens(type, token) {
   }
 }
 
-app.get("/token", async (req, res)=> {
-  var lesTokens = await displayTokens();
-  res.send(lesTokens);
-});
+async function startServer ({ _db = db }) {
+  app.get("/tokens", async (req, res, next)=> {
+    try {
+      var tokens = await getTokens({ _db })
+      console.log(tokens)
+      res.send(tokens)
+    } catch (e) {
+      console.error(e)
+      next(e)
+    }
+  })
 
-app.post("/tokens", (req, res) => {
-  res.send(req.body);
+  app.post("/tokens", (req, res) => {
+    res.send(req.body);
 
-  console.log("Voici la requête obtenue : " + JSON.stringify(req.body));
-  const type = req.body.type;
-  const token = req.body.token;
+    console.log("Voici la requête obtenue : " + JSON.stringify(req.body));
+    const type = req.body.type;
+    const token = req.body.token;
 
-  if (typeof type === "string" && typeof token === "number") {
-    insertTokens(type, token);
-  } else {
-    console.log("Erreur dans les types des données reçu");
-  }
-});
+    if (typeof type === "string" && typeof token === "number") {
+      insertTokens(type, token);
+    } else {
+      console.log("Erreur dans les types des données reçu");
+    }
+  });
 
-app.listen(8080);
+  app.listen(8080);
+}
+
+
+
+module.exports = {
+  startServer,
+  getTokens
+}
