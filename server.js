@@ -21,7 +21,7 @@ async function insertTokens(type, token) {
   }
 }
 
-async function startServer ({ _db = db }) {
+async function startServer ({ _db = db } = {}) {
   app.get("/tokens", async (req, res, next)=> {
     try {
       var tokens = await getTokens({ _db })
