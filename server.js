@@ -7,13 +7,14 @@ const bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+
 function getTokens({ _db }) {
-  return _db.any("SELECT * FROM Token")
+  return _db.any("SELECT * FROM token");
 }
 
-async function insertTokens(type, token) {
+async function insertTokens(type, token) {  
   try {
-    const sql = `INSERT INTO Token(Type, Token) VALUES($1,$2)`;
+    const sql = `INSERT INTO token(type, token) VALUES($1,$2)`;
     const users = await db.any(sql, [type, token]);
     console.log("Token inséré dans la base de donnée");
   } catch (e) {
@@ -21,17 +22,18 @@ async function insertTokens(type, token) {
   }
 }
 
-async function startServer ({ _db = db } = {}) {
-  app.get("/tokens", async (req, res, next)=> {
+async function startServer({ _db = db }) {
+  app.get("/tokens", async (req, res, next) => {
     try {
-      var tokens = await getTokens({ _db })
-      console.log(tokens)
-      res.send(tokens)
+      const tokens = await getTokens({ _db });
+      console.log(tokens);
+
+      res.send(tokens);
     } catch (e) {
-      console.error(e)
-      next(e)
+      console.error(e);
+      next(e);
     }
-  })
+  });
 
   app.post("/tokens", (req, res) => {
     res.send(req.body);
@@ -50,9 +52,7 @@ async function startServer ({ _db = db } = {}) {
   app.listen(8080);
 }
 
-
-
 module.exports = {
   startServer,
   getTokens
-}
+};

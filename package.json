@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest",
     "start": "node server.js",
-    "testDisplay": "jest testDisplay.test.js"
+    "get": "jest tests/get.test.js --watch"
   },
   "author": "",
   "license": "ISC",
