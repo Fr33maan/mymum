@@ -1,0 +1,74 @@
+{
+  "_args": [
+    [
+      "strapi-plugin-upload@3.0.0-beta.17.8",
+      "C:\\Users\\lapto\\Desktop\\projet"
+    ]
+  ],
+  "_from": "strapi-plugin-upload@3.0.0-beta.17.8",
+  "_id": "strapi-plugin-upload@3.0.0-beta.17.8",
+  "_inBundle": false,
+  "_integrity": "sha512-l6KPbGL/ZJ0nWFnOKLmpdfsePWv7dPrkxgHxgHgUOcW/mJi2V1IUqHG0VU6vw1YxG2NlRcV4gjSJzwts9XgKAg==",
+  "_location": "/strapi-plugin-upload",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "version",
+    "registry": true,
+    "raw": "strapi-plugin-upload@3.0.0-beta.17.8",
+    "name": "strapi-plugin-upload",
+    "escapedName": "strapi-plugin-upload",
+    "rawSpec": "3.0.0-beta.17.8",
+    "saveSpec": null,
+    "fetchSpec": "3.0.0-beta.17.8"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/strapi-plugin-upload/-/strapi-plugin-upload-3.0.0-beta.17.8.tgz",
+  "_spec": "3.0.0-beta.17.8",
+  "_where": "C:\\Users\\lapto\\Desktop\\projet",
+  "author": {
+    "name": "A Strapi developer"
+  },
+  "dependencies": {
+    "immutable": "^3.8.2",
+    "invariant": "^2.2.1",
+    "lodash": "^4.17.11",
+    "react": "^16.9.0",
+    "react-copy-to-clipboard": "^5.0.1",
+    "react-dom": "^16.9.0",
+    "react-intl": "^2.8.0",
+    "react-redux": "^7.0.2",
+    "react-router": "^5.0.0",
+    "react-router-dom": "^5.0.0",
+    "react-transition-group": "^2.5.0",
+    "reactstrap": "^5.0.0",
+    "strapi-helper-plugin": "3.0.0-beta.17.8",
+    "strapi-provider-upload-local": "3.0.0-beta.17.8",
+    "strapi-utils": "3.0.0-beta.17.8",
+    "stream-to-array": "^2.3.0",
+    "uuid": "^3.2.1"
+  },
+  "description": "This is the description of the plugin.",
+  "engines": {
+    "node": ">=10.0.0",
+    "npm": ">=6.0.0"
+  },
+  "gitHead": "cf6ecbff4f38ef4ad8718670f28b8b69d4cae01b",
+  "license": "MIT",
+  "maintainers": [
+    {
+      "name": "A Strapi developer"
+    }
+  ],
+  "name": "strapi-plugin-upload",
+  "scripts": {
+    "test": "echo \"no tests yet\""
+  },
+  "strapi": {
+    "name": "Files Upload",
+    "icon": "cloud-upload",
+    "description": "Description of upload plugin."
+  },
+  "version": "3.0.0-beta.17.8"
+}

@@ -1,0 +1,29 @@
+{
+  "connection": "default",
+  "collectionName": "tokens",
+  "info": {
+    "name": "token",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": [
+      "created_at",
+      "updated_at"
+    ],
+    "comment": ""
+  },
+  "attributes": {
+    "token_type": {
+      "enum": [
+        "digitalocean", 
+        "azure",
+        "gitlab"
+      ],
+      "type": "enumeration"
+    },
+    "token": {
+      "type": "string"
+    }
+  }
+}
