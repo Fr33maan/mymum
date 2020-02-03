@@ -14,9 +14,9 @@
     "comment": ""
   },
   "attributes": {
-    "token_type": {
+    "tokenType": {
       "enum": [
-        "digitalocean", 
+        "digitalocean",
         "azure",
         "gitlab"
       ],
