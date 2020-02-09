@@ -1,1 +1,1 @@
-To start a get request test, type : npm run get
+
